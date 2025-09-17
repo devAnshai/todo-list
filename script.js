@@ -8,8 +8,6 @@ const clearCompletedBtn = document.getElementById('clear-completed');
 const totalTasks = document.getElementById('total-tasks');
 const completedTasks = document.getElementById('completed-tasks');
 const remainingTasks = document.getElementById('remaining-tasks');
-const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
 
 let tasks = [];
 let filter = 'all';
@@ -219,28 +217,9 @@ filterBtns.forEach(btn => {
 
 clearCompletedBtn.onclick = clearCompleted;
 
-function setTheme(dark) {
-  if (dark) {
-    document.body.classList.add('dark');
-    themeIcon.src = 'https://cdn.jsdelivr.net/gh/feathericons/feather@4.28.0/icons/sun.svg';
-    themeIcon.alt = 'Switch to light mode';
-    localStorage.setItem('theme', 'dark');
-  } else {
-    document.body.classList.remove('dark');
-    themeIcon.src = 'https://cdn.jsdelivr.net/gh/feathericons/feather@4.28.0/icons/moon.svg';
-    themeIcon.alt = 'Switch to dark mode';
-    localStorage.setItem('theme', 'light');
-  }
-}
-
-themeToggle.onclick = () => {
-  setTheme(!document.body.classList.contains('dark'));
-};
-
 window.addEventListener('DOMContentLoaded', () => {
   loadTasks();
   renderTasks();
-  setTheme(localStorage.getItem('theme') === 'dark');
   renderAITasks();
 });
 

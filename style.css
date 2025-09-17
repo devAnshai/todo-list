@@ -261,24 +261,13 @@ h1 {
   max-width: 220px;
 }
 
-/* Theme toggle button */
-#theme-toggle {
-  position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.2rem;
-  border-radius: 50%;
-  transition: background 0.2s;
-  z-index: 2;
-}
-#theme-toggle:hover {
-  background: rgba(127,156,245,0.12);
-}
-#theme-icon {
-  display: block;
+/* Remove theme toggle button styles */
+#theme-toggle,
+#theme-toggle:hover,
+#theme-icon,
+.main-navbar #theme-toggle,
+.main-navbar #theme-icon {
+  display: none !important;
 }
 
 /* Navigation Bar Styles */
