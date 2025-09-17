@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>To-Do List Dashboard</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Prevent scroll bar */
+      }
+      .main-content.fixed-layout {
+        width: 100vw;
+        height: calc(100vh - 56px); /* Adjust if navbar height changes */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="main-navbar">
+      <div class="navbar-title">To-Do List</div>
+      <ul class="navbar-links">
+        <li><button id="nav-todo" class="nav-btn active">My Task</button></li>
+        <li><button id="nav-ai" class="nav-btn">AI Breakdown</button></li>
+        <li><button id="nav-aiask" class="nav-btn">AI Ask</button></li>
+      </ul>
+      <button id="theme-toggle" title="Toggle theme">
+        <img id="theme-icon" src="https://cdn.jsdelivr.net/gh/feathericons/feather@4.28.0/icons/moon.svg" alt="Toggle theme" width="24" height="24" />
+      </button>
+    </nav>
+    <main class="main-content fixed-layout">
+      <!-- My Task Section -->
+      <section id="todo-section">
+        <form id="task-form" autocomplete="off">
+          <div class="input-row">
+            <input type="text" id="task-input" placeholder="Add a new task..." />
+            <input type="date" id="deadline-input" />
+            <button type="submit" id="add-btn">Add</button>
+          </div>
+        </form>
+        <div class="task-stats">
+          <span id="total-tasks"></span>
+          <span id="completed-tasks"></span>
+          <span id="remaining-tasks"></span>
+        </div>
+        <div class="task-controls">
+          <span id="tasks-left"></span>
+          <div class="filters">
+            <button type="button" data-filter="all" class="filter-btn active">All</button>
+            <button type="button" data-filter="active" class="filter-btn">Active</button>
+            <button type="button" data-filter="completed" class="filter-btn">Completed</button>
+          </div>
+          <button type="button" id="clear-completed">Clear Completed</button>
+        </div>
+        <ul id="task-list"></ul>
+      </section>
+      <!-- AI Breakdown Section -->
+      <section id="ai-section" style="display:none;">
+        <h2>AI Task Breakdown</h2>
+        <form id="ai-task-form" autocomplete="off">
+          <div class="input-row">
+            <input type="text" id="ai-task-input" placeholder="Enter a big task for AI breakdown..." />
+            <input type="range" id="ai-priority-input" min="1" max="5" value="3" />
+            <span id="priority-label">Priority: 3</span>
+          </div>
+        </form>
+        <ul id="ai-task-list"></ul>
+      </section>
+      <!-- AI Ask Section -->
+      <section id="aiask-section" style="display:none;">
+        <h2>AI Ask (Chat with Gemini)</h2>
+        <div id="aiask-chat-window" class="aiask-chat-window"></div>
+        <form id="aiask-form" autocomplete="off" class="aiask-input-row">
+          <input type="text" id="aiask-input" placeholder="Ask anything..." autocomplete="off" />
+          <button type="submit" id="aiask-send-btn">Send</button>
+        </form>
+      </section>
+      <!-- Subtasks Modal -->
+      <div id="subtasks-modal" class="modal">
+        <div class="modal-content">
+          <h3>Subtasks</h3>
+          <ul id="subtasks-list"></ul>
+          <button id="close-subtasks-modal">Close</button>
+        </div>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
